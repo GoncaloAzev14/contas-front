@@ -25,7 +25,7 @@ function ExpenseDetailsPopup({ expense, onClose, onUpdateTransaction, onDeleteDa
     };
 
     const handleUndoClick = () => {
-        onDeleteData(expense.id); // Chama a função para excluir a transação
+        onDeleteData(expense.id, expense.value); // Chama a função para excluir a transação
         onClose(); // Fecha o popup após a exclusão
     };
 
@@ -77,10 +77,9 @@ function ExpenseDetailsPopup({ expense, onClose, onUpdateTransaction, onDeleteDa
                     </>
                 ) : (
                     <>
-                        <p>Valor: {expense.value.toFixed(2)}</p>
+                        <p>Valor: {expense.value}</p>
                         <p>Descrição: {expense.description}</p>
                         <p>Data: {new Date(expense.date).toLocaleDateString()}</p>
-                        {/* Botão para editar a transação */}
                         <button onClick={handleEditClick}>Editar</button>
                         <button onClick={handleUndoClick}>Desfazer</button>
                     </>
